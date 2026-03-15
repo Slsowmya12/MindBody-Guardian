@@ -1,0 +1,405 @@
+{
+  "category": "Autism",
+  "questions": [
+    {
+      "question": "How frequently does the individual exhibit poor eye contact?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person lack a social smile?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the individual remain aloof?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person fail to reach out to others?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently is the individual unable to relate to people?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent is the person unable to respond to social/environmental cues?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the individual engage in solitary and repetitive play activities?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently is the person unable to take turns in social interaction?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the individual fail to maintain peer relationships?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the person show inappropriate emotional responses?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the individual show exaggerated emotions?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person engage in self-stimulating behaviors?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the individual lack fear of danger?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the person get excited or agitated for no apparent reason?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often has the person acquired speech and then lost it?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the individual have difficulty using non-verbal language or gestures to communicate?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the person engage in stereotyped and repetitive use of language?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the individual engage in echolalic speech?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the person produce infantile squeals or unusual noises?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently is the person unable to initiate or sustain a conversation with others?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the individual use jargon or meaningless words?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the person use pronoun reversals?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently is the individual unable to grasp the pragmatics of communication (real meaning)?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person engage in stereotyped and repetitive motor mannerisms?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the individual show attachment to inanimate objects?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the person show hyperactivity/restlessness?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the individual exhibit aggressive behavior?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the person throw temper tantrums?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the individual engage in self-injurious behavior?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person insist on sameness?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent is the individual unusually sensitive to sensory stimuli?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the person stare into space for long periods of time?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the individual have difficulty in tracking objects?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person have unusual vision?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent is the individual insensitive to pain?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the person respond to objects or people unusually by smelling, touching, or tasting?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent is the individual's attention and concentration inconsistent?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often does the person show a delay in responding?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent does the individual have an unusual memory of some kind?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently does the person exhibit a 'savant' ability?",
+      "options": [
+        "Rarely",
+        "Sometimes",
+        "Frequently",
+        "Mostly",
+        "Always"
+      ]
+    }
+  ]
+}

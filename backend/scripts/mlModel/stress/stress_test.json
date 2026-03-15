@@ -1,0 +1,68 @@
+{
+  "category": "Stress",
+  "questions": [
+    {
+      "question": "How often do you find it challenging to wind down?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently do you tend to over-react to situations?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often do you feel that you are using a lot of nervous energy?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently do you find yourself getting agitated?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often do you find it difficult to relax?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently are you intolerant of anything that keeps you from getting on with what you are doing?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often do you feel rather touchy?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    }
+  ]
+}

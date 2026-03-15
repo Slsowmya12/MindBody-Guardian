@@ -1,0 +1,68 @@
+{
+  "category": "Depression",
+  "questions": [
+    {
+      "question": "How often do you find it difficult to experience any positive feelings at all?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently do you struggle to work up the initiative to do things?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often do you feel that you have nothing to look forward to?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently do you feel down-hearted and blue?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "To what extent are you unable to become enthusiastic about anything?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How often do you feel you aren\u2019t worth much as a person?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "How frequently do you feel that life is meaningless?",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    }
+  ]
+}

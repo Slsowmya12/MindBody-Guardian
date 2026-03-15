@@ -1,0 +1,235 @@
+{
+  "category": "Dyslexia",
+  "questions": [
+    {
+      "question": "How would you compare your current reading speed to that of others of the same age and education?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How much reading do you do in conjunction with your work (if retired or not working, how much did you read when you were working?)",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How much difficulty did you have learning to spell in elementary school?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How would you compare your current spelling to that of others of the same age and education?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Did your parents ever consider having you repeat any grades in school due to academic failure (not illness)?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you ever have difficulty remembering people\u2019s names or names of places",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you have difficulty remembering addresses, phone numbers, or dates?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you have difficulty remembering complex verbal instructions?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you currently reverse the order of letters or numbers when you read or write?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How many books do you read for pleasure each year?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How many magazines do you read for pleasure each month?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you read daily (Monday-Friday) newspapers?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Do you read a newspaper on Sunday?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Which of the following most nearly describes your attitude toward school when you were a child",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How much difficulty did you have learning to read in elementary school?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How much extra help did you need when learning to read in elementary school?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Did you ever reverse the order of letters or numbers when you were a child?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Did you have difficulty learning letter and/or color names when you were a child?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How would you compare your reading skill to that of others in your elementary classes?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "All students struggle from time to time in school. Compared to others in your classes, how much did you struggle to complete your work?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "Did you experience difficulty in high school or college English classes?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "What is your current attitude toward reading?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "question": "How much reading do you do for pleasure?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  ]
+}

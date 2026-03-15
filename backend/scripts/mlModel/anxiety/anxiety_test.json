@@ -1,0 +1,68 @@
+{
+  "category": "Anxiety",
+  "questions": [
+    {
+      "question": "I was aware of dryness of my mouth",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion)",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I experienced trembling (e.g. in the hands)",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I was worried about situations in which I might panic and make a fool of myself",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I felt I was close to panic",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I was aware of the action of my heart in the absence of physical exertion (e.g. sense of heart rate increase, heart missing a beat)",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    },
+    {
+      "question": "I felt scared without any good reason",
+      "options": [
+        "Never",
+        "Sometimes",
+        "Often",
+        "Always"
+      ]
+    }
+  ]
+}

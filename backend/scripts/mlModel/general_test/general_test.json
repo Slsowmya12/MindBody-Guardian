@@ -1,0 +1,201 @@
+{
+  "category": "General Test",
+  "questions": [
+    {
+      "question": "Do you often feel nervous without a specific reason?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you experience sudden and intense feelings of panic?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Are you frequently breathing rapidly, especially in stressful situations?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you find yourself sweating excessively, even when it's not hot?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you have difficulty concentrating on tasks?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you face challenges falling asleep or staying asleep?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Are you finding it difficult to cope with your work responsibilities?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you often feel a sense of hopelessness about the future?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you frequently experience intense feelings of anger?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you tend to overreact to situations more than usual?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Have you experienced a significant change in your eating habits recently?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Have you had thoughts of harming yourself or suicidal ideation?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you feel constantly tired, even after a good night's sleep?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you have someone close to talk to about your feelings?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you find yourself spending excessive time on social media?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Have you noticed a significant and unintended weight gain?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you consider yourself more introverted than usual?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you frequently experience intrusive and stressful memories?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you often have nightmares or disturbing dreams?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you tend to avoid people or activities that you used to enjoy?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Is it common for you to have a generally negative outlook on things?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you frequently find it hard to concentrate on your tasks?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you tend to blame yourself excessively for things that go wrong?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Have you experienced hallucinations or unusual perceptions?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you engage in repetitive behaviors or rituals?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do your mental health symptoms seem to worsen or improve seasonally?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Have you noticed a significant increase in your energy levels recently?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question": "Do you have any other mental health concerns not covered in the above questions?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    }
+  ]
+}
