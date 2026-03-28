@@ -36,7 +36,8 @@ const Videos = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Videos</Text>
+      <Text style={styles.title}>Exercises</Text>
+      <Text style={styles.subtitle}>Follow these workouts</Text>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         {videoFiles.map((video, index) => {
 
@@ -107,6 +108,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     padding:6,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 10,
   },
   getStartedButton: {
     backgroundColor: '#00acc1',

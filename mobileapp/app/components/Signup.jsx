@@ -1,63 +1,60 @@
 import React, {useState} from 'react';
-import { View, Text ,ImageBackground,TextInput,TouchableOpacity} from 'react-native';
+import { View, Text, ImageBackground, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Button } from 'react-native-paper';
-import Toast from 'react-native-toast-message'; 
+import Toast from 'react-native-toast-message';
 import config from '../../config';
 
-const signupUrl = `${config.SERVER_URL}/signup`;
+const requestOtpUrl = `${config.SERVER_URL}/signup`;
+const verifyOtpUrl = `${config.SERVER_URL}/signup/verify-otp`;
+const image = require('../../assets/images/swave.png');
 
-const image=require('../../assets/images/swave.png')
-const Signup = () => {
-  const [username, setUsername] = useState('');
+const Signup = ({ navigation }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleLogin = async () => {
-    if (!username || !password) {
+  const [otp, setOtp] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
+
+  const handleRequestOtp = async () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
       Toast.show({
         type: 'error',
         text1: 'Error',
-        text2: 'Both fields are required',
+        text2: 'Name, email, and password are required',
       });
       return;
     }
-    try {
-      console.log('enteres signup');
 
-      const response = await fetch(signupUrl, {
+    try {
+      const response = await fetch(requestOtpUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: username,
-          password: password,
+          name: name.trim(),
+          email: email.trim().toLowerCase(),
+          password,
         }),
       });
 
-      if (!response.ok) {
-        // Check if the response is not OK and log the response
-        const errorText = await response.text();
-        console.error('Error response:', errorText);
-        throw new Error('Network response was not ok');
-      }
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
         Toast.show({
           type: 'success',
-          text1: 'Success',
-          text2: data.message || 'Registered successfully',
+          text1: 'OTP Sent',
+          text2: data.message || 'OTP sent to your email',
         });
-        // Navigate to the next screen or perform any other actions on success
+        setOtpSent(true);
       } else {
         Toast.show({
           type: 'error',
           text1: 'Error',
-          text2: data.message || 'An error occurred',
+          text2: data.message || 'Unable to send OTP',
         });
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.error('Fetch error:', error);
       Toast.show({
         type: 'error',
@@ -65,20 +62,117 @@ const Signup = () => {
         text2: 'Failed to connect to the server',
       });
     }
+  };
 
-  }
-   return (
-    <ImageBackground source={image} style={{flex:1 ,width:'100%', height:'100%'}}>
-       <View className="container  m-4 items-start  absolute bottom-5 h-3/6 bg-transparent  p-4  ">
-        <Text className='text-lg my-2'>Username</Text>
-       <TextInput className='border border-cyan-600 border-2 p-1 text-sm  w-3/4 rounded-3xl ' placeholder="Username"  onChangeText={setUsername} />
-       <Text className='text-lg my-2'>Password</Text>
-       <TextInput  className=' border border-cyan-600 border-2 p-1 text-sm w-3/4 rounded-3xl ' placeholder="abc@123" onChangeText={setPassword}/>
-       <Button mode="contained" className='bg-cyan-900 text-slate-400 h-10 w-3/4 my-3' onPress={handleLogin}>signup</Button>
+  const handleVerifyOtp = async () => {
+    if (!email.trim() || !otp.trim()) {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Email and OTP are required',
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch(verifyOtpUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          otp: otp.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Toast.show({
+          type: 'success',
+          text1: 'Success',
+          text2: data.message || 'Signup completed',
+        });
+        setTimeout(() => navigation.navigate('Login'), 800);
+      } else {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: data.message || 'Invalid OTP',
+        });
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Failed to connect to the server',
+      });
+    }
+  };
+
+  return (
+    <ImageBackground source={image} style={{ flex: 1, width: '100%', height: '100%' }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 16 }}>
+          <View className="container items-start bg-transparent p-4">
+            <Text className='text-lg my-2'>Name</Text>
+            <TextInput
+          className='border border-cyan-600 border-2 p-1 text-sm w-3/4 rounded-3xl'
+          placeholder="Your full name"
+          autoCapitalize="words"
+          onChangeText={setName}
+          value={name}
+          editable={!otpSent}
+        />
+        <Text className='text-lg my-2'>Email</Text>
+        <TextInput
+          className='border border-cyan-600 border-2 p-1 text-sm w-3/4 rounded-3xl'
+          placeholder="you@example.com"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          onChangeText={setEmail}
+          value={email}
+          editable={!otpSent}
+        />
+        <Text className='text-lg my-2'>Password</Text>
+        <TextInput
+          className='border border-cyan-600 border-2 p-1 text-sm w-3/4 rounded-3xl'
+          placeholder="abc@123"
+          secureTextEntry
+          onChangeText={setPassword}
+          value={password}
+          editable={!otpSent}
+        />
+        {otpSent && (
+          <>
+            <Text className='text-lg my-2'>OTP</Text>
+            <TextInput
+              className='border border-cyan-600 border-2 p-1 text-sm w-3/4 rounded-3xl'
+              placeholder="Enter OTP"
+              keyboardType="numeric"
+              onChangeText={setOtp}
+              value={otp}
+            />
+          </>
+        )}
+        <Button
+          mode="contained"
+          className='bg-cyan-900 text-slate-400 h-10 w-3/4 my-3'
+          onPress={otpSent ? handleVerifyOtp : handleRequestOtp}
+        >
+          {otpSent ? 'Verify OTP' : 'Send OTP'}
+        </Button>
       </View>
-      <Toast></Toast>
-      
-    </ImageBackground>
-  )
-}
+    </ScrollView>
+  </KeyboardAvoidingView>
+  <Toast />
+</ImageBackground>
+  );
+};
+
 export default Signup

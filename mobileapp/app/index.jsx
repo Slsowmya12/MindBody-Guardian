@@ -5,7 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
-// import History from './components/(tabs)/History'
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 import MindBodyGuardian from './components/(tabs)/_layout';
 import Personalinfo from './components/(tabs)/Personalinfo';
 import Search from './components/(tabs)/Prompt';
@@ -31,8 +32,9 @@ const Index = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Signup" component={Signup}/>
-        <Stack.Screen name="MindBodyGuardian" component={MindBodyGuardian}/> 
-        {/* <Stack.Screen name="History" component={History}/> */}
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
+        <Stack.Screen name="ResetPassword" component={ResetPassword}/>
+        <Stack.Screen name="MindBodyGuardian" component={MindBodyGuardian} options={{ headerShown: false }} /> 
         <Stack.Screen name="Personalinfo" component={Personalinfo}/>
         <Stack.Screen name="Search" component={Search}/>
         {/* <Stack.Screen name="DrawerNavigator" component={DrawerNavigator}/> */}

@@ -50,8 +50,8 @@ const Questions = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // All questions answered, navigate to result
-      navigation.navigate('Result', { category, answers, name });
+      // All questions answered, navigate to result with question context
+      navigation.navigate('Result', { category, answers: newAnswers, questions, name });
     }
   };
 

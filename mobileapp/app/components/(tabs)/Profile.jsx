@@ -1,11 +1,13 @@
-import { View, Text,Pressable } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React from 'react';
 import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 const Profile = ({route}) => {
   const navigation = useNavigation();
+
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem('authToken');
@@ -24,10 +26,14 @@ const Profile = ({route}) => {
       });
     }
   };
-  const { username } = route.params; 
+
+  const username = route.params?.username ?? 'User';
+
   return (
-    <>
-       <View className='flex-1'>
+    <View className='flex-1'>
+      <View className='px-4 pt-6'>
+        <Text className='text-2xl font-bold text-black'>Profile</Text>
+      </View>
       <View className='items-center m-4 justify-center'>
         <View style={{ borderWidth: 6, borderColor: '#00acc1', borderRadius: 75 }}>
           <MaterialCommunityIcons
@@ -65,31 +71,6 @@ const Profile = ({route}) => {
           <Text className='text-lg text-cyan-600 font-bold'>Personal info</Text>
         </Pressable>
 
-        {/* <Pressable
-          onPress={() => navigation.navigate('History')}
-          className='flex-row items-center justify-start bg-white rounded-lg p-3 mt-4 w-3/4'
-          style={{
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
-          }}
-        >
-          <MaterialCommunityIcons
-            name="history"
-            size={24}
-            style={{
-              backgroundColor: '#00acc1',
-              color: 'white',
-              padding: 8,
-              borderRadius: 12,
-              marginRight: 8
-            }}
-          />
-          <Text className='text-lg text-cyan-600 font-bold'>History</Text>
-        </Pressable> */}
-
         <Pressable
           onPress={handleLogout}
           className='flex-row items-center justify-start bg-white rounded-lg p-3 mt-4 w-3/4'
@@ -112,11 +93,11 @@ const Profile = ({route}) => {
               marginRight: 8
             }}
           />
-          <Text className='text-lg text-cyan-600 font-bold'>Logout</Text>
+          <Text className='text-lg text-cyan-600 font-bold'>Sign out</Text>
         </Pressable>
       </View>
     </View>
-    </> 
   )
-} 
+}
+
 export default Profile

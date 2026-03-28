@@ -9,8 +9,8 @@ import tw from 'twrnc'; // Import twrnc for Tailwind CSS classes
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MindBodyGuardian = ({route}) => {
-  const { username } = route.params; 
+const MindBodyGuardian = ({ route }) => {
+  const username = route.params?.username ?? '';
   console.log(username);
   
   return (

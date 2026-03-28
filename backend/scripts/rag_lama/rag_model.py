@@ -1,4 +1,5 @@
-from flask import request, Blueprint
+from flask import request, Blueprint, current_app
+import jwt
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -81,6 +82,38 @@ def askPDFPost():
 
     print("Loading vector store")
 
+    auth_header = request.headers.get("Authorization", "")
+    token = None
+    if auth_header.startswith("Bearer "):
+        token = auth_header.split(" ", 1)[1]
+    if not token:
+        token = json_content.get("token")
+
+    user_context = ""
+    if token:
+        try:
+            secret = os.getenv("SECRET_KEY", "your-secret-key-here")
+            user_data = jwt.decode(token, secret, algorithms=["HS256"])
+            mongo = current_app.config['pymongo']
+            user = mongo.db.Users.find_one({'username': user_data.get('username')})
+            if user:
+                details = []
+                name = user.get('fullName') or user.get('name') or user.get('username')
+                if name:
+                    details.append(f"Name: {name}")
+                if user.get('email'):
+                    details.append(f"Email: {user['email']}")
+                if user.get('dob'):
+                    details.append(f"Date of Birth: {user['dob']}")
+                if user.get('gender'):
+                    details.append(f"Gender: {user['gender']}")
+                if user.get('fitnessGoals'):
+                    details.append(f"Fitness Goals: {user['fitnessGoals']}")
+                if details:
+                    user_context = "User details:\n" + "\n".join(details) + "\n\n"
+        except Exception as exc:
+            print("User token decode failed", exc)
+
     vector_store = Chroma(
         persist_directory=folder_path,
         embedding_function=embedding
@@ -99,7 +132,8 @@ def askPDFPost():
     document_chain = create_stuff_documents_chain(cached_llm, raw_prompt)
     chain = create_retrieval_chain(retriever, document_chain)
 
-    result = chain.invoke({"input": query})
+    enriched_query = f"{user_context}{query}" if query else user_context
+    result = chain.invoke({"input": enriched_query})
 
     print(result)
 
