@@ -5,10 +5,14 @@ from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_community.document_loaders import PDFPlumberLoader
-from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.chains import create_retrieval_chain
-from langchain.prompts import PromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
 import os
+
+# Load environment variables
+load_dotenv()
 
 rag_model_bp = Blueprint("rag_model", __name__)
 
@@ -36,7 +40,10 @@ text_splitter = RecursiveCharacterTextSplitter(
 raw_prompt = PromptTemplate.from_template(
 """
 <s>[INST] You are a technical assistant good at searching documents.
-If you do not know the answer from the context, say you don't know. [/INST] </s>
+If you do not know the answer from the context, say you don't know.
+Do not include any customer personal information or private data in your output.
+Only use information from the provided context and avoid making assumptions.
+[/INST] </s>
 
 [INST]
 Question: {input}
@@ -129,15 +136,38 @@ def askPDFPost():
 
     print("Creating chain")
 
-    document_chain = create_stuff_documents_chain(cached_llm, raw_prompt)
-    chain = create_retrieval_chain(retriever, document_chain)
+    # Create the RAG chain using LCEL
+    prompt_template = """
+<s>[INST] You are a technical assistant good at searching documents.
+If you do not know the answer from the context, say you don't know.
+Do not include any customer-specific data or private info in your output.
+Only answer from the supplied context and avoid assumptions.
+[/INST] </s>
+
+[INST]
+Question: {input}
+
+Context:
+{context}
+
+Answer:
+[/INST]
+"""
+    prompt = ChatPromptTemplate.from_template(prompt_template)
+    
+    chain = (
+        {"context": retriever, "input": RunnablePassthrough()}
+        | prompt
+        | cached_llm
+        | StrOutputParser()
+    )
 
     enriched_query = f"{user_context}{query}" if query else user_context
-    result = chain.invoke({"input": enriched_query})
+    result = chain.invoke(enriched_query)
 
     print(result)
 
-    return {"answer": result["answer"]}
+    return {"answer": result}
 
 
 # -------------------------

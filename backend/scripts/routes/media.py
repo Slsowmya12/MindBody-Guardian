@@ -1,21 +1,41 @@
 import os
 import cv2
 import numpy as np
-import tensorflow as tf
+from keras import models
 from flask import Blueprint, Response, jsonify, request,current_app
-import mediapipe as mp
 import base64
-import logging 
+import logging
 
 # Suppress TensorFlow warnings
 logging.getLogger('tensorflow').setLevel(logging.ERROR)
 
 media_bp = Blueprint('media', __name__)
-mp_pose = mp.solutions.pose
+
+# Initialize MediaPipe Pose with error handling
+pose = None
+try:
+    import mediapipe as mp
+    mp_pose = mp.solutions.pose
+    pose = mp_pose.Pose(
+        static_image_mode=False,
+        model_complexity=1,
+        smooth_landmarks=True,
+        enable_segmentation=False,
+        smooth_segmentation=True,
+        min_detection_confidence=0.5,
+        min_tracking_confidence=0.5
+    )
+except Exception as e:
+    logging.error(f"Failed to initialize MediaPipe Pose: {e}")
+    # Create a dummy pose object to prevent crashes
+    class DummyPose:
+        def process(self, image):
+            return None
+    pose = DummyPose()
 
 # Load your trained neural network model
 model_path = os.path.join(os.path.dirname(__file__), '..', 'NeuralNetwork', 'my_best_model.keras')
-model = tf.keras.models.load_model(model_path)
+model = models.load_model(model_path)
 
 # Define keypoints for each exercise
 exercise_keypoints = {

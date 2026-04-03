@@ -8,7 +8,7 @@ from routes.login import login_bp
 from routes.password_reset import password_reset_bp
 from routes.video import video_bp
 from routes.personalinfo import personalinfo_bp
-from routes.media import media_bp
+# from routes.media import media_bp
 from routes.tests import tests_bp
 from routes.history import history_bp
 from rag_lama.rag_model import rag_model_bp
@@ -30,7 +30,7 @@ def createApp():
     # app.register_blueprint(video_bp)
     app.register_blueprint(personalinfo_bp)
     app.register_blueprint(history_bp)
-    app.register_blueprint(media_bp)
+    # app.register_blueprint(media_bp)
     app.register_blueprint(tests_bp, url_prefix='/api')
     app.register_blueprint(rag_model_bp)
     return app

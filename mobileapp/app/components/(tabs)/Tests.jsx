@@ -1,20 +1,21 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import tw from 'twrnc';
 
 const Tests = () => {
   const navigation = useNavigation();
 
   const testCategories = [
-    { id: '1', name: 'Depression', category: 'depression' },
-    { id: '2', name: 'Anxiety', category: 'anxiety' },
-    { id: '3', name: 'Stress', category: 'stress' },
-    { id: '4', name: 'ADHD', category: 'adhd' },
-    { id: '5', name: 'Autism', category: 'autism' },
-    { id: '6', name: 'Dyslexia', category: 'dyslexia' },
-    { id: '7', name: 'PTSD', category: 'ptsd' },
-    { id: '8', name: 'General Mental Health', category: 'general_test' },
+    { id: '1', name: 'Depression', category: 'depression', icon: 'emoticon-sad-outline' },
+    { id: '2', name: 'Anxiety', category: 'anxiety', icon: 'brain' },
+    { id: '3', name: 'Stress', category: 'stress', icon: 'lightning-bolt' },
+    { id: '4', name: 'ADHD', category: 'adhd', icon: 'head-flash-outline' },
+    { id: '5', name: 'Autism', category: 'autism', icon: 'account-group' },
+    { id: '6', name: 'Dyslexia', category: 'dyslexia', icon: 'book-open-variant' },
+    { id: '7', name: 'PTSD', category: 'ptsd', icon: 'shield-alert-outline' },
+    { id: '8', name: 'General Mental Health', category: 'general_test', icon: 'heart-pulse' },
   ];
 
   const renderItem = ({ item }) => (
@@ -22,13 +23,22 @@ const Tests = () => {
       style={styles.tile}
       onPress={() => navigation.navigate('Questions', { category: item.category, name: item.name })}
     >
+      <MaterialCommunityIcons name={item.icon} size={30} color="#fff" style={styles.icon} />
       <Text style={styles.tileText}>{item.name}</Text>
     </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mental Health Tests</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Mental Health Tests</Text>
+        <TouchableOpacity
+          style={styles.historyButton}
+          onPress={() => navigation.navigate('History')}
+        >
+          <MaterialCommunityIcons name="history" size={24} color="#00acc1" />
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={testCategories}
         renderItem={renderItem}
@@ -46,12 +56,26 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f5f5f5',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
     color: '#333',
+  },
+  historyButton: {
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   list: {
     alignItems: 'center',
@@ -62,7 +86,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     width: 150,
-    height: 100,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
@@ -71,9 +95,12 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  icon: {
+    marginBottom: 8,
+  },
   tileText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
   },

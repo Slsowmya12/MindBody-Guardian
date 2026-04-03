@@ -29,8 +29,9 @@ const Questions = () => {
       });
       const data = await response.json();
       if (data.success) {
-        setQuestions(data.data.questions);
-        setAnswers(new Array(data.data.questions.length).fill(null));
+        const fetchedQuestions = Array.isArray(data?.data?.questions) ? data.data.questions : [];
+        setQuestions(fetchedQuestions);
+        setAnswers(new Array(fetchedQuestions.length).fill(null));
       } else {
         alert('Failed to load questions');
       }
@@ -66,13 +67,22 @@ const Questions = () => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
+  if (!Array.isArray(questions) || questions.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>No questions available</Text>
+        <Text>Please go back and choose a valid test.</Text>
+      </View>
+    );
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>{name} Test</Text>
       <Text style={styles.progress}>Question {currentQuestionIndex + 1} of {questions.length}</Text>
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{currentQuestion?.question}</Text>
-        {currentQuestion?.options.map((option, index) => (
+        {(Array.isArray(currentQuestion?.options) ? currentQuestion.options : []).map((option, index) => (
           <TouchableOpacity
             key={index}
             style={styles.option}

@@ -14,6 +14,7 @@ import Search from './components/(tabs)/Prompt';
 import Started from './components/(tabs)/Started';
 import Questions from './components/Questions';
 import Result from './components/Result';
+import History from './components/History';
 
 const Stack = createStackNavigator();
 const Index = () => {
@@ -41,6 +42,7 @@ const Index = () => {
         <Stack.Screen name="Started" component={Started}/>
         <Stack.Screen name="Questions" component={Questions}/>
         <Stack.Screen name="Result" component={Result}/>
+        <Stack.Screen name="History" component={History}/>
     </Stack.Navigator>  
     <Toast></Toast>
     </>

@@ -7,16 +7,33 @@ import config from '../../config';
 const Result = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { category, answers, questions = [], name } = route.params;
+  const { category, answers = [], questions = [], name, historyItem } = route.params || {};
+  const [entryId, setEntryId] = useState(historyItem?.entry_id || historyItem?._id || null);
 
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
   const [analysis, setAnalysis] = useState('');
   const [analysisLoading, setAnalysisLoading] = useState(false);
+  const [resultSaved, setResultSaved] = useState(false);
 
   useEffect(() => {
-    fetchResult();
+    if (historyItem) {
+      // If coming from history, use saved data
+      setResult({
+        percentage: historyItem.percentage,
+        severity_level: historyItem.severity_level,
+      });
+      // Check if AI analysis was already done
+      if (historyItem.ai_recommendation) {
+        setAnalysis(historyItem.ai_recommendation);
+      }
+      setLoading(false);
+      setResultSaved(true); // Mark as saved since it's from history
+    } else {
+      fetchResult();
+    }
   }, []);
+
 
   const fetchResult = async () => {
     try {
@@ -35,8 +52,22 @@ const Result = () => {
         }),
       });
       const data = await response.json();
-      if (data.success !== false) {
+      console.log('Prediction response data:', data);
+      if (data.percentage !== undefined && data.severity_level) {
         setResult(data);
+
+        // Save initial result to history even before AI analysis, if not saved yet.
+        if (!resultSaved) {
+          try {
+            const responseData = await saveHistory(data, null);
+            if (responseData?.entry_id) {
+              setEntryId(responseData.entry_id);
+            }
+            setResultSaved(true);
+          } catch (saveErr) {
+            console.error('Failed to save initial history:', saveErr);
+          }
+        }
       } else {
         alert('Failed to get prediction');
       }
@@ -45,6 +76,60 @@ const Result = () => {
       alert('Error fetching result');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const saveHistory = async (resultData, aiAnalysis = null) => {
+    console.log('saveHistory function called with resultData:', resultData, 'aiAnalysis:', aiAnalysis);
+    try {
+      const token = await AsyncStorage.getItem('authToken');
+      console.log('Retrieved token:', token ? 'Token exists' : 'No token found');
+      if (!token) {
+        console.error('No auth token found');
+        return;
+      }
+
+      const requestData = {
+        entry_id: entryId,
+        category,
+        name: name || category,
+        result: resultData.severity_level,
+        percentage: resultData.percentage,
+        severity_level: resultData.severity_level,
+        answers,
+        ai_recommendation: aiAnalysis,
+      };
+
+      console.log('Saving history with data:', requestData);
+
+      const response = await fetch(`${config.SERVER_URL}/api/saveTestHistory`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      console.log('Save history response status:', response.status);
+      const responseData = await response.json();
+      console.log('Save history response data:', responseData);
+
+      if (!response.ok) {
+        throw new Error(`History save failed ${response.status}: ${responseData?.message || JSON.stringify(responseData)}`);
+      }
+
+      setResultSaved(true);
+
+      if (responseData?.entry_id) {
+        setEntryId(responseData.entry_id);
+      }
+
+      return responseData;
+
+    } catch (error) {
+      console.error('Error saving history:', error);
+      // Don't alert user for background save failure
     }
   };
 
@@ -58,13 +143,16 @@ const Result = () => {
     setAnalysis('');
 
     try {
-      const answerContext = questions && questions.length === answers.length
-        ? questions.map((q, index) => {
-            const selectedIndex = answers[index];
-            const selectedOption = q.options?.[selectedIndex];
-            return `Question ${index + 1}: ${q.question}\nSelected answer: ${selectedOption ?? 'Answered option #' + (selectedIndex + 1)}`;
+      const normalizedQuestions = Array.isArray(questions) ? questions : [];
+      const normalizedAnswers = Array.isArray(answers) ? answers : [];
+
+      const answerContext = (normalizedQuestions.length > 0 && normalizedQuestions.length === normalizedAnswers.length)
+        ? normalizedQuestions.map((q, index) => {
+            const selectedIndex = normalizedAnswers[index];
+            const selectedOption = q?.options?.[selectedIndex];
+            return `Question ${index + 1}: ${q?.question ?? 'Unknown question'}\nSelected answer: ${selectedOption ?? 'Answered option #' + (Number.isInteger(selectedIndex) ? (selectedIndex + 1) : 'unknown')}`;
           }).join('\n\n')
-        : `Answers: ${JSON.stringify(answers)}`;
+        : `Answers: ${JSON.stringify(normalizedAnswers)}`;
 
       const prompt = `Analyze this mental health test result and provide:\n- A short analysis report\n- Personalized suggestions\n- Actionable mental health recommendations\n\nCategory: ${category}\nResult: ${result.severity_level}\nScore: ${result.percentage}%\n\nUse the following question context to understand the user responses:\n${answerContext}\n\nDo not repeat the raw answers back to the user. Provide only the final analysis, suggestions, and recommendations.`;
 
@@ -77,11 +165,30 @@ const Result = () => {
       });
 
       const data = await response.json();
+      console.log('AI raw response data:', data);
+      const aiResult = data?.answer || data?.content || data?.result || data?.analysis || data?.message || null;
+      console.log('Parsed aiResult:', aiResult);
 
-      if (data && (data.answer || data.content)) {
-        setAnalysis(data.answer || data.content || 'No analysis available.');
+      if (aiResult) {
+        setAnalysis(aiResult);
+
+        // Save to history (AI analysis text) and mark saved
+        if (result) {
+          try {
+            const responseData = await saveHistory(result, aiResult);
+            if (responseData?.entry_id) {
+              setEntryId(responseData.entry_id);
+            }
+            setResultSaved(true);
+          } catch (error) {
+            console.error('saveHistory failed:', error);
+            alert('Failed to save analysis. Please try again.');
+            return;
+          }
+        }
       } else {
-        setAnalysis('AI analysis could not be generated.');
+        console.warn('No AI result available', data);
+        alert('AI analysis returned no content. Please try again.');
       }
     } catch (error) {
       console.error(error);
@@ -124,7 +231,9 @@ const Result = () => {
         {analysisLoading ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Analyze Result with AI</Text>
+          <Text style={styles.buttonText}>
+            {analysis ? 'Re-analyze with AI' : 'Analyze Result with AI'}
+          </Text>
         )}
       </TouchableOpacity>
       {analysis ? (
